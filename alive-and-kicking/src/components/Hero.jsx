@@ -291,12 +291,12 @@ export function Hero() {
       {/* Wave decoration at bottom */}
       <WaveDecoration />
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on mobile, lower on desktop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.7 }}
-        className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 hidden sm:block"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
