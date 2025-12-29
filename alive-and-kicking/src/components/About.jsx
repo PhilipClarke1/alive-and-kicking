@@ -91,7 +91,7 @@ export function About() {
           </div>
 
           {/* Feature badges - Wood style */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
             {[
               { text: "Cash or Card", color: "from-slate-700 to-slate-800" },
               { text: "Dogs Welcome", color: "from-blue-800 to-blue-900" },
