@@ -250,7 +250,7 @@ export function Hero() {
           transition={{ delay: 0.4 }}
           className="mt-2 text-amber-300/80 text-sm sm:text-base tracking-wide"
         >
-          Cambridge, MA &bull; Serving Since 1995
+          Cambridge, MA
         </motion.p>
 
         {/* Fresh Catch Ticker */}

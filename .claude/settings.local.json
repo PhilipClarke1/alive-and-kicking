@@ -5,7 +5,9 @@
       "Bash(node:*)",
       "Bash(npm:*)",
       "WebFetch(domain:aliveandkickinglobsters.website)",
-      "WebFetch(domain:www.yelp.com)"
+      "WebFetch(domain:www.yelp.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
