@@ -26,7 +26,7 @@ export function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
       {/* Single compact navigation bar */}
       <nav className="bg-slate-900/90 backdrop-blur-md border-b border-white/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
@@ -42,8 +42,7 @@ export function Navbar() {
               className="h-10 w-10 rounded-full object-cover border-2 border-red-600"
             />
             <span
-              className="text-lg font-bold text-white tracking-wide hidden sm:block"
-              style={{ fontFamily: "Georgia, serif" }}
+              className="text-lg font-bold text-white tracking-wide hidden sm:block font-display"
             >
               Alive & Kicking
             </span>

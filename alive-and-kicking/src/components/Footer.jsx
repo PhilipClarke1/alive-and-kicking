@@ -20,7 +20,7 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold text-white" style={{ fontFamily: "Georgia, serif" }}>
+            <h3 className="text-xl font-bold text-white font-display">
               Alive & Kicking Lobsters
             </h3>
             <p className="mt-2 text-sm italic text-amber-200">

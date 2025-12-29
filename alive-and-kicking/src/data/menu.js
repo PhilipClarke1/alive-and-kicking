@@ -1,14 +1,28 @@
-// Import local images
-import heroImageFile from "../assets/heroImage.png";
+// Import local images (optimized WebP)
+import heroImageFile from "../assets/heroImage.webp";
+import heroImage1200 from "../assets/heroImage-1200.webp";
+import heroImage800 from "../assets/heroImage-800.webp";
 import twinLobsterImg from "../assets/twinLobsterSpecial.webp";
-import sandwichMealImg from "../assets/lobsterSandwich.jpeg";
-import menuImg from "../assets/menu.png";
-import logoImg from "../assets/logo.jpeg";
+import sandwichMealImg from "../assets/lobsterSandwich.webp";
+import menuImg from "../assets/menu.webp";
+import menuImg1200 from "../assets/menu-1200.webp";
+import menuImg800 from "../assets/menu-800.webp";
+import logoImg from "../assets/logo.webp";
 import seatingImg from "../assets/seating.webp";
 
 export const heroImage = heroImageFile;
+export const heroImageSrcSet = {
+  small: heroImage800,
+  medium: heroImage1200,
+  large: heroImageFile,
+};
 export const logo = logoImg;
 export const menuImage = menuImg;
+export const menuImageSrcSet = {
+  small: menuImg800,
+  medium: menuImg1200,
+  large: menuImg,
+};
 export const seatingImage = seatingImg;
 
 export const featuredItems = [

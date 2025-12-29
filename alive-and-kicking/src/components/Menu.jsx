@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Section } from "./Section";
-import { menuItems, categories, featuredItems, menuImage } from "../data/menu";
+import { menuItems, categories, featuredItems, menuImage, menuImageSrcSet } from "../data/menu";
+// PNG fallback for older browsers without WebP support
+import menuImagePng from "../assets/menu.png";
 import { useUIStore } from "../store/useUIStore";
 
 export function Menu() {
@@ -46,7 +48,7 @@ export function Menu() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
             {/* Content */}
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-              <h3 className="text-2xl font-bold mb-1" style={{ fontFamily: "Georgia, serif" }}>
+              <h3 className="text-2xl font-bold mb-1 font-display">
                 {item.name}
               </h3>
               <p className="text-amber-200 text-sm mb-2">{item.description}</p>
@@ -138,12 +140,31 @@ export function Menu() {
             `,
           }}
         >
-          <img
-            src={menuImage}
-            alt="Full Menu Board"
-            className="w-full h-auto"
-            loading="lazy"
-          />
+          <picture>
+            {/* WebP sources for modern browsers */}
+            <source
+              type="image/webp"
+              media="(max-width: 640px)"
+              srcSet={menuImageSrcSet.small}
+            />
+            <source
+              type="image/webp"
+              media="(max-width: 1024px)"
+              srcSet={menuImageSrcSet.medium}
+            />
+            <source
+              type="image/webp"
+              srcSet={menuImage}
+            />
+            {/* PNG fallback for older browsers */}
+            <img
+              src={menuImagePng}
+              alt="Full Menu Board"
+              className="w-full h-auto"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
         </motion.div>
       </div>
 

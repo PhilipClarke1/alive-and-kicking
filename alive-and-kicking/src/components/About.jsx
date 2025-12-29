@@ -77,13 +77,13 @@ export function About() {
               `,
             }}
           >
-            <p className="text-lg leading-relaxed text-amber-100" style={{ fontFamily: "Georgia, serif" }}>
+            <p className="text-lg leading-relaxed text-amber-100 font-display">
               Hidden in a blue house on a quiet Cambridge street, Alive & Kicking
               Lobsters has been serving the neighborhood since 1995. We're a
               no-frills fish market and lobster shack—just lobster tanks, fresh
               seafood on ice, and the best lobster sandwich in Boston.
             </p>
-            <p className="mt-4 text-lg leading-relaxed text-amber-100" style={{ fontFamily: "Georgia, serif" }}>
+            <p className="mt-4 text-lg leading-relaxed text-amber-100 font-display">
               Grab a seat at our outdoor picnic tables, order at the counter, and
               enjoy lobster the way it's meant to be—fresh, simple, and straight
               from the ocean.

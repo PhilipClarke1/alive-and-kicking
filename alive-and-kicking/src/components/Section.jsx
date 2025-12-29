@@ -12,7 +12,7 @@ export function Section({ id, title, children, className = "", titleClassName = 
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {title && (
-          <h2 className={`mb-8 text-center text-3xl font-bold tracking-tight md:text-4xl ${titleClassName || 'text-slate-900'}`}>
+          <h2 className={`mb-8 text-center text-3xl font-bold tracking-tight md:text-4xl font-display ${titleClassName || 'text-slate-900'}`}>
             {title}
           </h2>
         )}

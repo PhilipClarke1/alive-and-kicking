@@ -172,10 +172,9 @@ export function MarketPrices() {
             }}
           />
           <p
-            className="text-lg sm:text-2xl font-bold text-amber-100 uppercase tracking-widest relative"
+            className="text-lg sm:text-2xl font-bold text-amber-100 uppercase tracking-widest relative font-display"
             style={{
               textShadow: "1px 1px 2px rgba(0,0,0,0.5)",
-              fontFamily: "Georgia, serif",
             }}
           >
             Today's Fresh Catch
