@@ -30,38 +30,50 @@ export function Navbar() {
       {/* Single compact navigation bar */}
       <nav className="bg-slate-900/90 backdrop-blur-md border-b border-white/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-          {/* Logo */}
-          <a
+          {/* Logo with hover effect */}
+          <motion.a
             href="#hero"
             onClick={(e) => handleNavClick(e, "hero")}
-            className="flex items-center gap-2 transition-opacity hover:opacity-80"
+            className="flex items-center gap-2"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <img
+            <motion.img
               src={logo}
               alt="Alive & Kicking Lobsters"
               className="h-10 w-10 rounded-full object-cover border-2 border-red-600"
+              whileHover={{ rotate: 5, borderColor: "#ef4444" }}
+              transition={{ duration: 0.2 }}
             />
             <span
               className="text-lg font-bold text-white tracking-wide hidden sm:block font-display"
             >
               Alive & Kicking
             </span>
-          </a>
+          </motion.a>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation with animated underlines */}
           <ul className="hidden items-center gap-6 lg:flex">
             {navLinks.map((link) => (
               <li key={link.id}>
                 <a
                   href={`#${link.id}`}
                   onClick={(e) => handleNavClick(e, link.id)}
-                  className={`text-sm font-medium tracking-wide transition-colors ${
+                  className={`relative text-sm font-medium tracking-wide transition-colors py-1 ${
                     activeSection === link.id
                       ? "text-red-400"
                       : "text-white/80 hover:text-white"
                   }`}
                 >
                   {link.label}
+                  {/* Animated underline */}
+                  <motion.span
+                    className="absolute left-0 right-0 bottom-0 h-0.5 bg-red-400 origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: activeSection === link.id ? 1 : 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                  />
                 </a>
               </li>
             ))}
@@ -72,15 +84,27 @@ export function Navbar() {
             <span className="text-white/60 text-xs">
               {contactInfo.hours.weekday}
             </span>
-            <a
+            <motion.a
               href={`tel:${contactInfo.phone}`}
-              className="inline-flex items-center gap-1.5 rounded-full bg-red-700 px-4 py-1.5 text-sm font-medium text-white transition-all hover:bg-red-600"
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-1.5 rounded-full bg-red-700 px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-600"
+              style={{
+                boxShadow: "0 2px 10px rgba(185, 28, 28, 0.3)",
+              }}
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <motion.svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                whileHover={{ rotate: 15 }}
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
+              </motion.svg>
               Call
-            </a>
+            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}

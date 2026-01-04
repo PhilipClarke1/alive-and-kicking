@@ -5,6 +5,37 @@ import { menuItems, categories, featuredItems, menuImage, menuImageSrcSet } from
 import menuImagePng from "../assets/menu.png";
 import { useUIStore } from "../store/useUIStore";
 
+// Animation variants for staggered effects
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
+
+const featuredCardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 export function Menu() {
   const menuFilter = useUIStore((state) => state.menuFilter);
   const setMenuFilter = useUIStore((state) => state.setMenuFilter);
@@ -27,56 +58,90 @@ export function Menu() {
         <div className="h-0.5 w-20 bg-red-700"></div>
       </div>
 
-      {/* Featured Items - Two Hero Images */}
-      <div className="grid gap-6 md:grid-cols-2 mb-12">
-        {featuredItems.map((item) => (
+      {/* Featured Items - Two Hero Images with stagger */}
+      <motion.div
+        className="grid gap-6 md:grid-cols-2 mb-12"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        {featuredItems.map((item, index) => (
           <motion.div
             key={item.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative overflow-hidden rounded-xl shadow-2xl group"
+            variants={featuredCardVariants}
+            whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            className="relative overflow-hidden rounded-xl shadow-2xl group cursor-pointer"
+            style={{
+              boxShadow: "0 10px 40px rgba(0,0,0,0.3)",
+            }}
           >
             <div className="aspect-[4/3] overflow-hidden">
               <img
                 src={item.image}
                 alt={item.name}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
               />
             </div>
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            {/* Content */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+            {/* Overlay with enhanced hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/90" />
+            {/* Content with slide-up effect */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-300 group-hover:translate-y-[-4px]">
               <h3 className="text-2xl font-bold mb-1 font-display">
                 {item.name}
               </h3>
-              <p className="text-amber-200 text-sm mb-2">{item.description}</p>
+              <p className="text-amber-200 text-sm mb-2 transition-colors duration-300 group-hover:text-amber-100">{item.description}</p>
               <div className="flex items-center gap-3">
-                <span className="text-2xl font-bold text-amber-300">{item.price}</span>
+                <motion.span
+                  className="text-2xl font-bold text-amber-300"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {item.price}
+                </motion.span>
                 {item.priceToGo && (
                   <span className="text-sm text-amber-100/80">To Go: {item.priceToGo}</span>
                 )}
               </div>
             </div>
+            {/* Hover glow effect */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+              style={{
+                boxShadow: "inset 0 0 30px rgba(251, 191, 36, 0.15)",
+              }}
+            />
           </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      {/* Filter Chips */}
+      {/* Filter Chips with animation */}
       <div className="mb-6 flex flex-wrap justify-center gap-3">
         {categories.map((category) => (
-          <button
+          <motion.button
             key={category.id}
             onClick={() => setMenuFilter(category.id)}
-            className={`rounded-lg px-4 py-2 text-sm font-bold uppercase tracking-wide transition-all ${
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className={`rounded-lg px-4 py-2 text-sm font-bold uppercase tracking-wide transition-all relative overflow-hidden ${
               menuFilter === category.id
                 ? "bg-red-700 text-white shadow-lg"
                 : "bg-white text-slate-700 border-2 border-amber-300 hover:border-red-400 hover:text-red-700"
             }`}
+            style={{
+              boxShadow: menuFilter === category.id
+                ? "0 4px 15px rgba(185, 28, 28, 0.4)"
+                : "0 2px 8px rgba(0,0,0,0.1)",
+            }}
           >
             {category.label}
-          </button>
+            {/* Animated underline for active state */}
+            {menuFilter === category.id && (
+              <motion.div
+                layoutId="activeFilter"
+                className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-300"
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            )}
+          </motion.button>
         ))}
       </div>
 
@@ -97,14 +162,24 @@ export function Menu() {
           `,
         }}
       >
-        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-          {filteredItems.map((item) => (
+        <motion.div
+          className="grid gap-3 md:grid-cols-2 lg:grid-cols-3"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          key={menuFilter} // Re-animate on filter change
+        >
+          {filteredItems.map((item, index) => (
             <motion.div
               key={item.id}
               layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex justify-between items-baseline py-2 px-3 rounded-lg hover:bg-white/5 transition-colors border-b border-amber-900/30"
+              variants={itemVariants}
+              whileHover={{
+                backgroundColor: "rgba(255,255,255,0.08)",
+                x: 4,
+                transition: { duration: 0.2 },
+              }}
+              className="flex justify-between items-baseline py-2 px-3 rounded-lg transition-colors border-b border-amber-900/30 cursor-default"
             >
               <div>
                 <span className="text-amber-100 font-medium">{item.name}</span>
@@ -120,7 +195,7 @@ export function Menu() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Full Menu Image - Full width with proper framing */}

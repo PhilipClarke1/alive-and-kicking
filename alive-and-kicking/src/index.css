@@ -13,9 +13,9 @@
   --chalkboard: #1e293b;
   --rope-brown: #8b6914;
 
-  /* Typography */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Source Serif 4', Georgia, serif;
+  /* Typography - Rustic lobster shack fonts */
+  --font-display: 'Rye', Georgia, serif;
+  --font-body: 'Lora', Georgia, serif;
 }
 
 /* Smooth scrolling for anchor navigation */

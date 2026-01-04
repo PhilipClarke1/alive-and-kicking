@@ -232,6 +232,6 @@ export const contactInfo = {
   tagline: "Boston's Famous Lobster Sandwich",
   social: {
     instagram: "https://instagram.com/aliveandkickinglobsters",
-    facebook: "https://facebook.com/aliveandkickinglobsters",
+    facebook: "https://www.facebook.com/p/Alive-and-Kicking-Lobsters-100068865900163/",
   },
 };

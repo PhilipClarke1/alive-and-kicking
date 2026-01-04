@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { contactInfo, heroImage, heroImageSrcSet } from "../data/menu";
 // PNG fallback for older browsers without WebP support
 import heroImagePng from "../assets/heroImage.png";
@@ -128,6 +129,17 @@ function LobsterAccent() {
 }
 
 export function Hero() {
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax transforms - background moves slower than scroll
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   const scrollToMenu = (e) => {
     e.preventDefault();
     document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
@@ -135,6 +147,7 @@ export function Hero() {
 
   return (
     <section
+      ref={heroRef}
       id="hero"
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden"
       style={{
@@ -142,34 +155,39 @@ export function Hero() {
         minHeight: "100dvh" // Dynamic viewport height for mobile
       }}
     >
-      {/* Responsive Background Image with WebP + PNG fallback */}
-      <picture className="absolute inset-0">
-        {/* WebP sources for modern browsers */}
-        <source
-          type="image/webp"
-          media="(max-width: 640px)"
-          srcSet={heroImageSrcSet.small}
-        />
-        <source
-          type="image/webp"
-          media="(max-width: 1024px)"
-          srcSet={heroImageSrcSet.medium}
-        />
-        <source
-          type="image/webp"
-          srcSet={heroImage}
-        />
-        {/* PNG fallback for older browsers */}
-        <img
-          src={heroImagePng}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: "45% 50%" }}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
-      </picture>
+      {/* Responsive Background Image with WebP + PNG fallback and parallax */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: backgroundY }}
+      >
+        <picture className="absolute inset-0">
+          {/* WebP sources for modern browsers */}
+          <source
+            type="image/webp"
+            media="(max-width: 640px)"
+            srcSet={heroImageSrcSet.small}
+          />
+          <source
+            type="image/webp"
+            media="(max-width: 1024px)"
+            srcSet={heroImageSrcSet.medium}
+          />
+          <source
+            type="image/webp"
+            srcSet={heroImage}
+          />
+          {/* PNG fallback for older browsers */}
+          <img
+            src={heroImagePng}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: "45% 50%", transform: "scale(1.1)" }}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+      </motion.div>
 
       {/* Radial gradient overlay - stronger for better text contrast */}
       <div
@@ -187,8 +205,11 @@ export function Hero() {
       {/* Decorative Lobster */}
       <LobsterAccent />
 
-      {/* Content */}
-      <div className="relative z-10 w-full mx-auto max-w-5xl px-4 py-16 text-center sm:px-6 lg:px-8">
+      {/* Content with parallax */}
+      <motion.div
+        className="relative z-10 w-full mx-auto max-w-5xl px-4 py-16 text-center sm:px-6 lg:px-8"
+        style={{ y: contentY, opacity: contentOpacity }}
+      >
 
         {/* Rope/Line Decoration */}
         <motion.div
@@ -286,7 +307,7 @@ export function Hero() {
             View Menu
           </a>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Wave decoration at bottom */}
       <WaveDecoration />
