@@ -1,21 +1,14 @@
 // Import local images (optimized WebP)
-import heroImageFile from "../assets/heroImage.webp";
-import heroImage1200 from "../assets/heroImage-1200.webp";
-import heroImage800 from "../assets/heroImage-800.webp";
+import heroImageFile from "../assets/bostonharbor.jpeg";
 import twinLobsterImg from "../assets/twinLobsterSpecial.webp";
 import sandwichMealImg from "../assets/lobsterSandwich.webp";
 import menuImg from "../assets/menu.webp";
 import menuImg1200 from "../assets/menu-1200.webp";
 import menuImg800 from "../assets/menu-800.webp";
-import logoImg from "../assets/logo.webp";
+import logoImg from "../assets/akl-logo-removebg-preview.png";
 import seatingImg from "../assets/seating.webp";
 
 export const heroImage = heroImageFile;
-export const heroImageSrcSet = {
-  small: heroImage800,
-  medium: heroImage1200,
-  large: heroImageFile,
-};
 export const logo = logoImg;
 export const menuImage = menuImg;
 export const menuImageSrcSet = {

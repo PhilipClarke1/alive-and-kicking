@@ -1,8 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { contactInfo, heroImage, heroImageSrcSet } from "../data/menu";
-// PNG fallback for older browsers without WebP support
-import heroImagePng from "../assets/heroImage.png";
+import { contactInfo, heroImage, logo } from "../data/menu";
 
 const PhoneIcon = () => (
   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -105,28 +103,6 @@ function WaveDecoration() {
   );
 }
 
-// Decorative Lobster Silhouette
-function LobsterAccent() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 0.15, x: 0 }}
-      transition={{ delay: 0.6, duration: 0.8 }}
-      className="absolute top-32 left-4 md:left-12 w-20 h-20 text-red-400 hidden md:block"
-    >
-      <svg viewBox="0 0 100 100" fill="currentColor">
-        <ellipse cx="50" cy="55" rx="18" ry="25" />
-        <ellipse cx="50" cy="25" rx="12" ry="10" />
-        <ellipse cx="25" cy="35" rx="10" ry="6" transform="rotate(-30 25 35)" />
-        <ellipse cx="75" cy="35" rx="10" ry="6" transform="rotate(30 75 35)" />
-        <path d="M20 35 Q5 20 15 10" strokeWidth="4" stroke="currentColor" fill="none" />
-        <path d="M80 35 Q95 20 85 10" strokeWidth="4" stroke="currentColor" fill="none" />
-        <ellipse cx="50" cy="85" rx="8" ry="12" />
-        <path d="M42 95 L35 105 M50 97 L50 108 M58 95 L65 105" strokeWidth="2" stroke="currentColor" />
-      </svg>
-    </motion.div>
-  );
-}
 
 export function Hero() {
   const heroRef = useRef(null);
@@ -155,46 +131,28 @@ export function Hero() {
         minHeight: "100dvh" // Dynamic viewport height for mobile
       }}
     >
-      {/* Responsive Background Image with WebP + PNG fallback and parallax */}
+      {/* Background Image with parallax */}
       <motion.div
         className="absolute inset-0"
         style={{ y: backgroundY }}
       >
-        <picture className="absolute inset-0">
-          {/* WebP sources for modern browsers */}
-          <source
-            type="image/webp"
-            media="(max-width: 640px)"
-            srcSet={heroImageSrcSet.small}
-          />
-          <source
-            type="image/webp"
-            media="(max-width: 1024px)"
-            srcSet={heroImageSrcSet.medium}
-          />
-          <source
-            type="image/webp"
-            srcSet={heroImage}
-          />
-          {/* PNG fallback for older browsers */}
-          <img
-            src={heroImagePng}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: "45% 50%", transform: "scale(1.1)" }}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-          />
-        </picture>
+        <img
+          src={heroImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center center" }}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
       </motion.div>
 
-      {/* Radial gradient overlay - stronger for better text contrast */}
+      {/* Radial gradient overlay - lightened */}
       <div
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 60% at 50% 45%, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.45) 100%)
+            radial-gradient(ellipse 80% 60% at 50% 45%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.35) 100%)
           `,
         }}
       />
@@ -202,14 +160,44 @@ export function Hero() {
       {/* Established Badge */}
       <EstablishedBadge />
 
-      {/* Decorative Lobster */}
-      <LobsterAccent />
 
       {/* Content with parallax */}
       <motion.div
-        className="relative z-10 w-full mx-auto max-w-5xl px-4 py-16 text-center sm:px-6 lg:px-8"
+        className="relative z-10 w-full mx-auto max-w-5xl px-4 pb-16 text-center sm:px-6 lg:px-8"
         style={{ y: contentY, opacity: contentOpacity }}
       >
+
+        {/* Logo with glow effect */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.7, type: 'spring', stiffness: 100, damping: 15 }}
+          className="mb-6 relative"
+        >
+          {/* Subtle glow background */}
+          <motion.div
+            className="absolute inset-0 rounded-full blur-2xl"
+            style={{
+              background: 'radial-gradient(circle, rgba(194, 59, 34, 0.15) 0%, transparent 70%)',
+              transform: 'scale(1.3)'
+            }}
+            animate={{
+              scale: [1.3, 1.5, 1.3],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: 'easeInOut'
+            }}
+          />
+
+          <img
+            src={logo}
+            alt="Alive & Kicking Lobsters"
+            className="w-36 md:w-48 h-36 md:h-48 mx-auto object-contain"
+          />
+        </motion.div>
 
         {/* Rope/Line Decoration */}
         <motion.div

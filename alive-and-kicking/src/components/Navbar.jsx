@@ -28,7 +28,14 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
       {/* Single compact navigation bar */}
-      <nav className="bg-slate-900/90 backdrop-blur-md border-b border-white/10">
+      <nav className="bg-slate-900/90 backdrop-blur-md relative">
+        {/* Gradient fade at bottom edge */}
+        <div
+          className="absolute left-0 right-0 top-full h-8 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0) 100%)'
+          }}
+        />
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
           {/* Logo with hover effect */}
           <motion.a
@@ -41,8 +48,8 @@ export function Navbar() {
             <motion.img
               src={logo}
               alt="Alive & Kicking Lobsters"
-              className="h-10 w-10 rounded-full object-cover border-2 border-red-600"
-              whileHover={{ rotate: 5, borderColor: "#ef4444" }}
+              className="h-14 w-14 object-contain"
+              whileHover={{ rotate: 5 }}
               transition={{ duration: 0.2 }}
             />
             <span
