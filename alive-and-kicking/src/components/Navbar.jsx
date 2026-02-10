@@ -88,7 +88,7 @@ export function Navbar() {
 
           {/* Right side - Hours + Call */}
           <div className="hidden md:flex items-center gap-4">
-            <span className="text-white/60 text-xs">
+            <span className="text-amber-300/90 text-sm font-medium tracking-wide">
               {contactInfo.hours.weekday}
             </span>
             <motion.a

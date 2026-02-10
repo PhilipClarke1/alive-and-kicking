@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { contactInfo, heroImage, logo } from "../data/menu";
+import { contactInfo, heroImage } from "../data/menu";
 
 const PhoneIcon = () => (
   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -22,7 +22,7 @@ function FreshCatchTicker() {
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
         transition={{
-          duration: 20,
+          duration: 35,
           repeat: Infinity,
           ease: "linear"
         }}
@@ -38,34 +38,20 @@ function FreshCatchTicker() {
   );
 }
 
-// Established Badge
+// Established Badge - inline version for use near title
 function EstablishedBadge() {
   return (
-    <motion.div
-      initial={{ opacity: 0, rotate: -10, scale: 0.8 }}
-      animate={{ opacity: 1, rotate: -6, scale: 1 }}
-      transition={{ duration: 0.6, delay: 0.4, type: "spring" }}
-      className="absolute top-24 right-4 md:top-28 md:right-8 lg:right-16 z-20"
+    <motion.span
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: 0.4 }}
+      className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/90 text-slate-900"
+      style={{
+        boxShadow: "0 2px 8px rgba(0,0,0,0.3)"
+      }}
     >
-      <div
-        className="px-4 py-2 rounded-lg shadow-xl"
-        style={{
-          background: `
-            repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(0,0,0,0.05) 2px, rgba(255,255,255,0.03) 4px),
-            linear-gradient(to bottom, #c4a35a, #a67c52)
-          `,
-          boxShadow: `
-            inset 2px 2px 4px rgba(255,255,255,0.3),
-            inset -2px -2px 4px rgba(0,0,0,0.2),
-            4px 4px 12px rgba(0,0,0,0.5)
-          `
-        }}
-      >
-        <span className="text-slate-900 font-bold text-sm uppercase tracking-wider">
-          Est. 1995
-        </span>
-      </div>
-    </motion.div>
+      Est. 1995
+    </motion.span>
   );
 }
 
@@ -147,57 +133,22 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Radial gradient overlay - lightened */}
+      {/* Darker gradient overlay for better text legibility */}
       <div
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 80% 60% at 50% 45%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.35) 100%)
+            linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.6) 100%)
           `,
         }}
       />
 
-      {/* Established Badge */}
-      <EstablishedBadge />
-
 
       {/* Content with parallax */}
       <motion.div
-        className="relative z-10 w-full mx-auto max-w-5xl px-4 pb-16 text-center sm:px-6 lg:px-8"
+        className="relative z-10 w-full mx-auto max-w-5xl px-4 pb-28 sm:pb-24 text-center sm:px-6 lg:px-8"
         style={{ y: contentY, opacity: contentOpacity }}
       >
-
-        {/* Logo with glow effect */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.7, type: 'spring', stiffness: 100, damping: 15 }}
-          className="mb-6 relative"
-        >
-          {/* Subtle glow background */}
-          <motion.div
-            className="absolute inset-0 rounded-full blur-2xl"
-            style={{
-              background: 'radial-gradient(circle, rgba(194, 59, 34, 0.15) 0%, transparent 70%)',
-              transform: 'scale(1.3)'
-            }}
-            animate={{
-              scale: [1.3, 1.5, 1.3],
-              opacity: [0.3, 0.5, 0.3]
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: 'easeInOut'
-            }}
-          />
-
-          <img
-            src={logo}
-            alt="Alive & Kicking Lobsters"
-            className="w-36 md:w-48 h-36 md:h-48 mx-auto object-contain"
-          />
-        </motion.div>
 
         {/* Rope/Line Decoration */}
         <motion.div
@@ -252,18 +203,25 @@ export function Hero() {
           {contactInfo.tagline}
         </motion.p>
 
-        {/* Sub-tagline with location */}
-        <motion.p
+        {/* Sub-tagline with location and Est badge */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-2 text-amber-300/80 text-sm sm:text-base tracking-wide"
+          className="mt-4 flex items-center justify-center gap-3"
         >
-          Cambridge, MA
-        </motion.p>
+          <span
+            className="text-white text-sm sm:text-base tracking-wide font-medium"
+            style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.6)" }}
+          >
+            Cambridge, MA
+          </span>
+          <span className="text-white/40">|</span>
+          <EstablishedBadge />
+        </motion.div>
 
         {/* Fresh Catch Ticker */}
-        <div className="mt-6 max-w-2xl mx-auto">
+        <div className="mt-8 max-w-2xl mx-auto">
           <FreshCatchTicker />
         </div>
 
@@ -272,7 +230,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
             href={`tel:${contactInfo.phone.replace(/[^\d]/g, "")}`}
