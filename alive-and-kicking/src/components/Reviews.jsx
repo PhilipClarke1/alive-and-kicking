@@ -2,7 +2,6 @@ import { motion, useInView } from "framer-motion";
 import { Section } from "./Section";
 import { useRef, useEffect, useState } from "react";
 
-// Animated counter hook
 function useCountUp(end, duration = 1.5, startOnView = true) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
@@ -26,7 +25,6 @@ function useCountUp(end, duration = 1.5, startOnView = true) {
   return { count, ref };
 }
 
-// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -118,36 +116,24 @@ function StarRating({ rating, animated = false }) {
   );
 }
 
-// Rating card with animated counter
-function AnimatedRatingCard({ platform, data, index }) {
+function AnimatedRatingCard({ platform, data }) {
   const { count: scoreCount, ref: scoreRef } = useCountUp(data.score, 1.2);
   const { count: reviewCount, ref: reviewRef } = useCountUp(data.reviews, 1.5);
 
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ y: -6, scale: 1.02 }}
-      className="px-6 py-4 rounded-xl text-center cursor-default"
-      style={{
-        background: `
-          repeating-linear-gradient(90deg, rgba(139,90,43,0.1) 0px, rgba(160,120,60,0.12) 2px, rgba(139,90,43,0.1) 4px),
-          linear-gradient(to bottom, #c4a35a, #a67c52)
-        `,
-        boxShadow: `
-          inset 2px 2px 6px rgba(255,255,255,0.3),
-          inset -2px -2px 6px rgba(0,0,0,0.2),
-          4px 4px 12px rgba(0,0,0,0.4)
-        `,
-      }}
+      whileHover={{ y: -4, scale: 1.02 }}
+      className="px-6 py-4 rounded-2xl text-center bg-white shadow-lg ring-1 ring-black/5 cursor-default"
     >
-      <div ref={scoreRef} className="text-3xl font-bold text-slate-900">
+      <div ref={scoreRef} className="text-3xl font-bold text-slate-800">
         {scoreCount.toFixed(1)}
       </div>
       <div className="flex justify-center my-1">
         <StarRating rating={Math.round(data.score)} animated />
       </div>
-      <div className="text-sm text-slate-700 font-medium capitalize">{platform}</div>
-      <div ref={reviewRef} className="text-xs text-slate-600">
+      <div className="text-sm text-slate-600 font-medium capitalize">{platform}</div>
+      <div ref={reviewRef} className="text-xs text-slate-400">
         {Math.round(reviewCount).toLocaleString()} reviews
       </div>
     </motion.div>
@@ -156,15 +142,15 @@ function AnimatedRatingCard({ platform, data, index }) {
 
 export function Reviews() {
   return (
-    <Section id="reviews" title="WHAT FOLKS ARE SAYING" className="bg-slate-800" titleClassName="text-amber-100">
-      {/* Decorative header */}
+    <Section id="reviews" title="WHAT FOLKS ARE SAYING" className="bg-gradient-to-b from-[#f5efe6] to-[#ede4d4]" titleClassName="text-slate-800">
+      {/* Decorative divider */}
       <div className="flex items-center justify-center gap-4 -mt-4 mb-8">
-        <div className="h-0.5 w-20 bg-amber-500"></div>
-        <span className="text-amber-400 text-2xl">&#9733;</span>
-        <div className="h-0.5 w-20 bg-amber-500"></div>
+        <div className="h-px flex-1 max-w-20 bg-gradient-to-r from-transparent to-slate-400" />
+        <span className="text-red-700 text-2xl">&#9733;</span>
+        <div className="h-px flex-1 max-w-20 bg-gradient-to-l from-transparent to-slate-400" />
       </div>
 
-      {/* Rating Summary Cards with stagger */}
+      {/* Rating Summary Cards */}
       <motion.div
         className="flex flex-wrap justify-center gap-4 mb-10"
         variants={containerVariants}
@@ -172,12 +158,12 @@ export function Reviews() {
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
       >
-        {Object.entries(ratings).map(([platform, data], index) => (
-          <AnimatedRatingCard key={platform} platform={platform} data={data} index={index} />
+        {Object.entries(ratings).map(([platform, data]) => (
+          <AnimatedRatingCard key={platform} platform={platform} data={data} />
         ))}
       </motion.div>
 
-      {/* Reviews Grid with stagger */}
+      {/* Reviews Grid */}
       <motion.div
         className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         variants={containerVariants}
@@ -185,39 +171,32 @@ export function Reviews() {
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
       >
-        {reviews.map((review, index) => (
+        {reviews.map((review) => (
           <motion.div
             key={review.id}
             variants={cardVariants}
             whileHover={{
-              y: -6,
-              boxShadow: "0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(251, 191, 36, 0.1)",
+              y: -4,
               transition: { duration: 0.2 },
             }}
-            className="bg-slate-900 rounded-xl p-6 shadow-lg border border-amber-900/30 relative group cursor-default"
+            className="bg-white rounded-2xl p-6 shadow-lg ring-1 ring-black/5 relative group cursor-default"
           >
-            {/* Quote mark with animation */}
-            <motion.div
-              initial={{ scale: 1.5, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 0.2 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.4 }}
-              className="absolute top-4 left-4 text-5xl sm:text-6xl text-amber-700 font-serif leading-none"
-            >
+            {/* Quote mark */}
+            <div className="absolute top-4 left-4 text-5xl sm:text-6xl text-slate-200 font-serif leading-none">
               "
-            </motion.div>
+            </div>
 
             {/* Left accent bar */}
-            <div className="absolute left-0 top-6 bottom-6 w-1 bg-amber-700/30 rounded-full group-hover:bg-amber-500/50 transition-colors duration-300" />
+            <div className="absolute left-0 top-6 bottom-6 w-1 bg-red-700/20 rounded-full group-hover:bg-red-700/40 transition-colors duration-300" />
 
             <div className="relative pl-2">
               <StarRating rating={review.rating} />
-              <p className="mt-4 text-amber-100 italic leading-relaxed group-hover:text-amber-50 transition-colors duration-300">
+              <p className="mt-4 text-slate-700 italic leading-relaxed">
                 "{review.quote}"
               </p>
               <div className="mt-4 flex items-center justify-between">
-                <span className="text-amber-300 font-medium group-hover:text-amber-200 transition-colors duration-300">— {review.reviewer}</span>
-                <span className="text-amber-200/60 text-sm px-2 py-0.5 rounded bg-amber-900/30">{review.source}</span>
+                <span className="text-slate-800 font-medium">— {review.reviewer}</span>
+                <span className="text-slate-400 text-sm px-2 py-0.5 rounded-full bg-slate-100">{review.source}</span>
               </div>
             </div>
           </motion.div>
@@ -231,7 +210,7 @@ export function Reviews() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <p className="text-amber-200 mb-4">Love your experience? Let others know!</p>
+        <p className="text-slate-600 mb-4">Love your experience? Let others know!</p>
         <div className="flex flex-wrap justify-center gap-3">
           <motion.a
             href="https://www.google.com/search?q=Alive+and+Kicking+Lobsters+Cambridge+MA+reviews"
@@ -239,10 +218,7 @@ export function Reviews() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="px-5 py-2 bg-amber-600 text-white rounded-lg font-medium transition-all"
-            style={{
-              boxShadow: "0 4px 15px rgba(217, 119, 6, 0.3)",
-            }}
+            className="px-5 py-2 bg-slate-800 text-amber-50 rounded-full font-medium shadow-md transition-all hover:bg-slate-700"
           >
             Review on Google
           </motion.a>
@@ -252,10 +228,7 @@ export function Reviews() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            className="px-5 py-2 bg-red-600 text-white rounded-lg font-medium transition-all"
-            style={{
-              boxShadow: "0 4px 15px rgba(220, 38, 38, 0.3)",
-            }}
+            className="px-5 py-2 bg-red-700 text-white rounded-full font-medium shadow-md transition-all hover:bg-red-600"
           >
             Review on Yelp
           </motion.a>

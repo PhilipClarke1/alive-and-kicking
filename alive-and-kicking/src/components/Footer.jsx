@@ -4,16 +4,14 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 py-12 text-amber-100 border-t-4 border-red-800">
+    <footer className="bg-slate-900 py-12 text-slate-300 border-t border-slate-700">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Decorative anchor */}
+        {/* Decorative divider */}
         <div className="flex justify-center mb-8">
           <div className="flex items-center gap-4">
-            <div className="h-0.5 w-16 bg-amber-600"></div>
-            <svg className="w-8 h-8 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-            </svg>
-            <div className="h-0.5 w-16 bg-amber-600"></div>
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-slate-600" />
+            <span className="text-red-700 text-xl">&#9733;</span>
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-slate-600" />
           </div>
         </div>
 
@@ -23,10 +21,10 @@ export function Footer() {
             <h3 className="text-xl font-bold text-white font-display">
               Alive & Kicking Lobsters
             </h3>
-            <p className="mt-2 text-sm italic text-amber-200">
+            <p className="mt-2 text-sm italic text-slate-400">
               {contactInfo.tagline}
             </p>
-            <p className="mt-4 text-sm text-amber-300">
+            <p className="mt-4 text-sm text-slate-500">
               Serving Cambridge since 1995
             </p>
           </div>
@@ -70,12 +68,12 @@ export function Footer() {
           {/* Social */}
           <div>
             <h4 className="font-bold text-white uppercase tracking-wide text-sm">Follow Us</h4>
-            <div className="mt-3 flex gap-4">
+            <div className="mt-3 flex gap-3">
               <a
                 href={contactInfo.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-red-800 text-white transition-all hover:bg-red-700 hover:scale-110"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-800 text-slate-300 transition-all hover:bg-slate-700 hover:text-white hover:scale-110 ring-1 ring-white/10"
                 aria-label="Instagram"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -86,7 +84,7 @@ export function Footer() {
                 href={contactInfo.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-red-800 text-white transition-all hover:bg-red-700 hover:scale-110"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-800 text-slate-300 transition-all hover:bg-slate-700 hover:text-white hover:scale-110 ring-1 ring-white/10"
                 aria-label="Facebook"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -94,13 +92,13 @@ export function Footer() {
                 </svg>
               </a>
             </div>
-            <p className="mt-4 text-xs text-amber-400">
+            <p className="mt-4 text-xs text-slate-500">
               Cash or card. Dogs welcome!
             </p>
           </div>
         </div>
 
-        <div className="mt-10 border-t border-slate-700 pt-6 text-center text-sm text-amber-300">
+        <div className="mt-10 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
           <p>&copy; {currentYear} Alive & Kicking Lobsters. All rights reserved.</p>
         </div>
       </div>

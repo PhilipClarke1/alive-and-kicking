@@ -38,16 +38,16 @@ function FreshCatchTicker() {
   );
 }
 
-// Established Badge - inline version for use near title
+// Established Badge - subtle inline text style
 function EstablishedBadge() {
   return (
     <motion.span
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.4 }}
-      className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/90 text-slate-900"
+      className="text-amber-300/80 text-sm tracking-wider font-medium"
       style={{
-        boxShadow: "0 2px 8px rgba(0,0,0,0.3)"
+        textShadow: "1px 1px 4px rgba(0,0,0,0.6)"
       }}
     >
       Est. 1995
@@ -234,16 +234,10 @@ export function Hero() {
         >
           <a
             href={`tel:${contactInfo.phone.replace(/[^\d]/g, "")}`}
-            className="relative inline-flex items-center gap-2 rounded-xl bg-red-700 px-6 py-3 text-base font-bold text-white transition-all hover:bg-red-600 hover:scale-105 hover:shadow-2xl hover:-translate-y-1 active:scale-95 uppercase tracking-wide shadow-lg overflow-hidden group"
+            className="inline-flex items-center gap-2 rounded-xl border-2 border-white/70 bg-white/10 px-6 py-3 text-base font-bold text-white transition-all hover:border-white hover:bg-white/20 hover:scale-105 hover:shadow-lg hover:-translate-y-1 active:scale-95 uppercase tracking-wide backdrop-blur-sm"
           >
             <PhoneIcon />
             Call to Order
-            {/* Pulsing ring effect */}
-            <motion.span
-              className="absolute inset-0 rounded-xl border-2 border-red-400/50"
-              animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
           </a>
           <a
             href="#menu"

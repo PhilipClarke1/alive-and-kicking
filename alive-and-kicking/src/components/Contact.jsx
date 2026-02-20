@@ -48,8 +48,8 @@ export function Contact() {
 
   if (isSubmitted) {
     return (
-      <Section id="contact" title="Drop Us a Line" className="bg-amber-50" titleClassName="text-slate-800">
-        <div className="mx-auto max-w-lg rounded-lg border-2 border-green-300 bg-green-50 p-8 text-center shadow-lg">
+      <Section id="contact" title="Drop Us a Line" className="bg-gradient-to-b from-[#f5efe6] to-[#ede4d4]" titleClassName="text-slate-800">
+        <div className="mx-auto max-w-lg rounded-2xl bg-white p-8 text-center shadow-lg ring-1 ring-green-200">
           <svg
             className="mx-auto h-12 w-12 text-green-600"
             fill="none"
@@ -63,15 +63,15 @@ export function Contact() {
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <h3 className="mt-4 text-lg font-bold text-green-800">
+          <h3 className="mt-4 text-lg font-bold text-slate-800">
             Message Sent!
           </h3>
-          <p className="mt-2 text-green-700">
+          <p className="mt-2 text-slate-600">
             Thanks for reaching out. We'll get back to you soon.
           </p>
           <button
             onClick={() => setIsSubmitted(false)}
-            className="mt-4 text-sm font-bold text-green-700 transition-colors hover:text-green-900 uppercase tracking-wide"
+            className="mt-4 text-sm font-bold text-red-700 transition-colors hover:text-red-900 uppercase tracking-wide"
           >
             Send another message
           </button>
@@ -81,17 +81,17 @@ export function Contact() {
   }
 
   return (
-    <Section id="contact" title="Drop Us a Line" className="bg-amber-50" titleClassName="text-slate-800">
-      {/* Decorative header */}
+    <Section id="contact" title="Drop Us a Line" className="bg-gradient-to-b from-[#f5efe6] to-[#ede4d4]" titleClassName="text-slate-800">
+      {/* Decorative divider */}
       <div className="flex items-center justify-center gap-4 -mt-4 mb-8">
-        <div className="h-0.5 w-20 bg-red-700"></div>
+        <div className="h-px flex-1 max-w-20 bg-gradient-to-r from-transparent to-slate-400" />
         <span className="text-red-700 text-2xl">&#9733;</span>
-        <div className="h-0.5 w-20 bg-red-700"></div>
+        <div className="h-px flex-1 max-w-20 bg-gradient-to-l from-transparent to-slate-400" />
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="mx-auto max-w-lg space-y-6 bg-white p-8 rounded-lg shadow-lg border-2 border-amber-200"
+        className="mx-auto max-w-lg space-y-6 bg-white p-8 rounded-2xl shadow-lg ring-1 ring-black/5"
         noValidate
       >
         <div>
@@ -107,8 +107,8 @@ export function Contact() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`mt-2 block w-full rounded-lg border-2 px-4 py-3 text-base text-slate-800 shadow-sm transition-colors placeholder:text-slate-400 focus:border-red-500 focus:ring-red-500 focus:outline-none ${
-              errors.name ? "border-red-300 bg-red-50" : "border-amber-200"
+            className={`mt-2 block w-full rounded-xl border px-4 py-3 text-base text-slate-800 shadow-sm transition-colors placeholder:text-slate-400 focus:border-red-500 focus:ring-1 focus:ring-red-500 focus:outline-none ${
+              errors.name ? "border-red-300 bg-red-50" : "border-slate-200"
             }`}
             placeholder="Your name"
           />
@@ -130,8 +130,8 @@ export function Contact() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`mt-2 block w-full rounded-lg border-2 px-4 py-3 text-base text-slate-800 shadow-sm transition-colors placeholder:text-slate-400 focus:border-red-500 focus:ring-red-500 focus:outline-none ${
-              errors.email ? "border-red-300 bg-red-50" : "border-amber-200"
+            className={`mt-2 block w-full rounded-xl border px-4 py-3 text-base text-slate-800 shadow-sm transition-colors placeholder:text-slate-400 focus:border-red-500 focus:ring-1 focus:ring-red-500 focus:outline-none ${
+              errors.email ? "border-red-300 bg-red-50" : "border-slate-200"
             }`}
             placeholder="you@example.com"
           />
@@ -153,8 +153,8 @@ export function Contact() {
             rows={4}
             value={formData.message}
             onChange={handleChange}
-            className={`mt-2 block w-full rounded-lg border-2 px-4 py-3 text-base text-slate-800 shadow-sm transition-colors placeholder:text-slate-400 focus:border-red-500 focus:ring-red-500 focus:outline-none ${
-              errors.message ? "border-red-300 bg-red-50" : "border-amber-200"
+            className={`mt-2 block w-full rounded-xl border px-4 py-3 text-base text-slate-800 shadow-sm transition-colors placeholder:text-slate-400 focus:border-red-500 focus:ring-1 focus:ring-red-500 focus:outline-none ${
+              errors.message ? "border-red-300 bg-red-50" : "border-slate-200"
             }`}
             placeholder="How can we help you?"
           />
@@ -165,7 +165,7 @@ export function Contact() {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-red-700 px-6 py-4 text-base font-bold text-white uppercase tracking-wide transition-all hover:bg-red-600 shadow-lg hover:shadow-xl border-2 border-red-600"
+          className="w-full rounded-full bg-slate-800 px-6 py-4 text-base font-bold text-amber-50 uppercase tracking-wide transition-all hover:bg-slate-700 shadow-lg"
         >
           Send Message
         </button>

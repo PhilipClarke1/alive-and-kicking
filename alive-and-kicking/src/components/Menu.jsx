@@ -5,35 +5,18 @@ import { menuItems, categories, featuredItems, menuImage, menuImageSrcSet } from
 import menuImagePng from "../assets/menu.png";
 import { useUIStore } from "../store/useUIStore";
 
-// Animation variants for staggered effects
+// Keep unused animation variants to avoid HMR issues
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
-    },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
-
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };
-
 const featuredCardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 export function Menu() {
@@ -50,205 +33,139 @@ export function Menu() {
         );
 
   return (
-    <Section id="menu" title="WHAT'S COOKIN'" className="bg-amber-50" titleClassName="text-slate-800">
-      {/* Decorative header */}
-      <div className="flex items-center justify-center gap-4 -mt-4 mb-8">
-        <div className="h-0.5 w-20 bg-red-700"></div>
-        <span className="text-red-700 text-2xl">&#9733;</span>
-        <div className="h-0.5 w-20 bg-red-700"></div>
-      </div>
+    <section id="menu" className="py-16 md:py-24 bg-amber-50">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 className="mb-8 text-center text-4xl font-bold tracking-tight md:text-5xl font-display text-slate-800">
+          WHAT'S COOKIN'
+        </h2>
 
-      {/* Featured Items - Two Hero Images with stagger */}
-      <motion.div
-        className="grid gap-6 md:grid-cols-2 mb-12"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-      >
-        {featuredItems.map((item, index) => (
-          <motion.div
-            key={item.id}
-            variants={featuredCardVariants}
-            whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            className="relative overflow-hidden rounded-xl shadow-2xl group cursor-pointer"
-            style={{
-              boxShadow: "0 10px 40px rgba(0,0,0,0.3)",
-            }}
-          >
-            <div className="aspect-[4/3] overflow-hidden">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
-              />
-            </div>
-            {/* Overlay with enhanced hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-300 group-hover:from-black/90" />
-            {/* Content with slide-up effect */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-300 group-hover:translate-y-[-4px]">
-              <h3 className="text-2xl font-bold mb-1 font-display">
-                {item.name}
-              </h3>
-              <p className="text-amber-200 text-sm mb-2 transition-colors duration-300 group-hover:text-amber-100">{item.description}</p>
-              <div className="flex items-center gap-3">
-                <motion.span
-                  className="text-2xl font-bold text-amber-300"
-                  whileHover={{ scale: 1.05 }}
+        {/* Decorative header */}
+        <div className="flex items-center justify-center gap-4 -mt-4 mb-8">
+          <div className="h-0.5 w-20 bg-red-700"></div>
+          <span className="text-red-700 text-2xl">&#9733;</span>
+          <div className="h-0.5 w-20 bg-red-700"></div>
+        </div>
+
+        {/* Featured Items — alternating image/description blocks */}
+        <div className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 mb-12">
+          {featuredItems.map((item, index) => {
+            const isReversed = index % 2 !== 0;
+            return (
+              <div key={item.id} className="grid grid-cols-1 md:grid-cols-2 gap-0 items-stretch">
+                <div className={`overflow-hidden ${isReversed ? "md:order-2" : ""}`}>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-72 md:h-[400px] object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div
+                  className={`flex flex-col justify-center p-8 md:p-12 lg:p-16 md:h-[400px] ${
+                    isReversed
+                      ? "md:order-1 bg-slate-800 text-white"
+                      : "bg-white text-slate-800"
+                  }`}
                 >
-                  {item.price}
-                </motion.span>
-                {item.priceToGo && (
-                  <span className="text-sm text-amber-100/80">To Go: {item.priceToGo}</span>
-                )}
+                  <div className={`h-px w-12 mb-6 ${isReversed ? "bg-amber-400" : "bg-red-700"}`} />
+                  <h3
+                    className={`text-2xl md:text-3xl font-bold font-display uppercase tracking-wide mb-4 ${
+                      isReversed ? "text-white" : "text-slate-800"
+                    }`}
+                  >
+                    {item.name}
+                  </h3>
+                  <p
+                    className={`text-base md:text-lg leading-relaxed mb-6 font-body ${
+                      isReversed ? "text-slate-300" : "text-slate-600"
+                    }`}
+                  >
+                    {item.description}
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`text-2xl md:text-3xl font-bold font-display ${
+                        isReversed ? "text-amber-400" : "text-red-700"
+                      }`}
+                    >
+                      {item.price}
+                    </span>
+                    {item.priceToGo && (
+                      <span className={`text-sm ${isReversed ? "text-slate-400" : "text-slate-500"}`}>
+                        To Go: {item.priceToGo}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-            {/* Hover glow effect */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-              style={{
-                boxShadow: "inset 0 0 30px rgba(251, 191, 36, 0.15)",
-              }}
-            />
-          </motion.div>
-        ))}
-      </motion.div>
+            );
+          })}
+        </div>
 
-      {/* Filter Chips with animation */}
-      <div className="mb-6 flex flex-wrap justify-center gap-3">
-        {categories.map((category) => (
-          <motion.button
-            key={category.id}
-            onClick={() => setMenuFilter(category.id)}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className={`rounded-lg px-4 py-2 text-sm font-bold uppercase tracking-wide transition-all relative overflow-hidden ${
-              menuFilter === category.id
-                ? "bg-red-700 text-white shadow-lg"
-                : "bg-white text-slate-700 border-2 border-amber-300 hover:border-red-400 hover:text-red-700"
-            }`}
-            style={{
-              boxShadow: menuFilter === category.id
-                ? "0 4px 15px rgba(185, 28, 28, 0.4)"
-                : "0 2px 8px rgba(0,0,0,0.1)",
-            }}
-          >
-            {category.label}
-            {/* Animated underline for active state */}
-            {menuFilter === category.id && (
-              <motion.div
-                layoutId="activeFilter"
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-300"
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              />
-            )}
-          </motion.button>
-        ))}
-      </div>
+        {/* Full Menu Header */}
+        <div className="text-center mb-10">
+          <h3 className="text-2xl md:text-3xl font-bold text-slate-800 font-display uppercase tracking-wide">
+            Full Menu
+          </h3>
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <div className="h-0.5 w-16 bg-red-700"></div>
+            <span className="text-red-700">&#9733;</span>
+            <div className="h-0.5 w-16 bg-red-700"></div>
+          </div>
+        </div>
 
-      {/* Text-Only Menu List */}
-      <div
-        className="rounded-xl p-6 md:p-8 shadow-xl"
-        style={{
-          background: `
-            repeating-linear-gradient(90deg, rgba(139,90,43,0.08) 0px, rgba(160,120,60,0.1) 2px, rgba(139,90,43,0.08) 4px),
-            linear-gradient(to bottom, #3d2817, #2a1a0f)
-          `,
-          boxShadow: `
-            inset 2px 2px 8px rgba(255,255,255,0.1),
-            inset -2px -2px 8px rgba(0,0,0,0.3),
-            0 0 0 4px #5c3d2e,
-            0 0 0 6px #3d2817,
-            8px 8px 20px rgba(0,0,0,0.4)
-          `,
-        }}
-      >
-        <motion.div
-          className="grid gap-3 md:grid-cols-2 lg:grid-cols-3"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          key={menuFilter} // Re-animate on filter change
-        >
-          {filteredItems.map((item, index) => (
-            <motion.div
-              key={item.id}
-              layout
-              variants={itemVariants}
-              whileHover={{
-                backgroundColor: "rgba(255,255,255,0.08)",
-                x: 4,
-                transition: { duration: 0.2 },
-              }}
-              className="flex justify-between items-baseline py-2 px-3 rounded-lg transition-colors border-b border-amber-900/30 cursor-default"
-            >
-              <div>
-                <span className="text-amber-100 font-medium">{item.name}</span>
-                {item.description && (
-                  <span className="block text-amber-300/60 text-xs mt-0.5">{item.description}</span>
-                )}
-              </div>
-              <div className="ml-4 text-right flex-shrink-0">
-                <span className="text-amber-300 font-bold">{item.price}</span>
-                {item.priceToGo && (
-                  <span className="block text-amber-200/60 text-xs">To Go: {item.priceToGo}</span>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+        {/* Menu List — grouped by category, minimalist two-column layout */}
+        <div className="max-w-4xl mx-auto">
+          {categories
+            .filter((cat) => cat.id !== "all")
+            .map((category) => {
+              const items = menuItems.filter((item) =>
+                Array.isArray(item.category)
+                  ? item.category.includes(category.id)
+                  : item.category === category.id
+              );
+              if (items.length === 0) return null;
+              return (
+                <div key={category.id} className="mb-10">
+                  <h4 className="text-center text-lg md:text-xl font-bold font-display uppercase tracking-[0.2em] text-slate-800 mb-6">
+                    {category.label}
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
+                    {items.map((item) => (
+                      <div key={item.id} className="py-3 border-b border-slate-300/60">
+                        <div className="flex justify-between items-baseline gap-4">
+                          <span className="text-slate-800 font-semibold uppercase tracking-wide text-base">
+                            {item.name}
+                          </span>
+                          <span className="flex-shrink-0 text-slate-800 font-semibold text-base">
+                            {item.price}
+                          </span>
+                        </div>
+                        {item.description && (
+                          <p className="text-slate-500 text-xs mt-1 leading-relaxed">
+                            {item.description}
+                          </p>
+                        )}
+                        {item.priceToGo && (
+                          <p className="text-slate-400 text-xs mt-0.5 italic">
+                            To Go: {item.priceToGo}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+        </div>
 
-      {/* Full Menu Image - Full width with proper framing */}
-      <div className="mt-12">
-        <p className="text-slate-600 mb-6 font-medium text-center text-lg">Our Complete Menu Board</p>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="rounded-xl overflow-hidden shadow-2xl"
-          style={{
-            boxShadow: `
-              0 0 0 6px #5c3d2e,
-              0 0 0 10px #3d2817,
-              0 0 0 12px #2a1a0f,
-              12px 12px 40px rgba(0,0,0,0.5)
-            `,
-          }}
-        >
-          <picture>
-            {/* WebP sources for modern browsers */}
-            <source
-              type="image/webp"
-              media="(max-width: 640px)"
-              srcSet={menuImageSrcSet.small}
-            />
-            <source
-              type="image/webp"
-              media="(max-width: 1024px)"
-              srcSet={menuImageSrcSet.medium}
-            />
-            <source
-              type="image/webp"
-              srcSet={menuImage}
-            />
-            {/* PNG fallback for older browsers */}
-            <img
-              src={menuImagePng}
-              alt="Full Menu Board"
-              className="w-full h-auto"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
-        </motion.div>
+        {/* Note */}
+        <div className="mt-8 text-center">
+          <p className="text-slate-600 text-sm italic">
+            Fresh seafood daily. Menu items may sell out. Cash preferred, cards accepted.
+          </p>
+        </div>
       </div>
-
-      {/* Note */}
-      <div className="mt-8 text-center">
-        <p className="text-slate-600 text-sm italic">
-          Fresh seafood daily. Menu items may sell out. Cash preferred, cards accepted.
-        </p>
-      </div>
-    </Section>
+    </section>
   );
 }

@@ -1,119 +1,126 @@
 import { motion } from "framer-motion";
 import { Section } from "./Section";
 import { seatingImage } from "../data/menu";
+import louPhoto from "../assets/lou1984pic2.jpg";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 export function About() {
   return (
-    <Section id="about" title="Our Story" className="bg-amber-100" titleClassName="text-slate-800">
-      {/* Decorative header */}
-      <div className="flex items-center justify-center gap-4 -mt-4 mb-8">
-        <div className="h-0.5 w-20 bg-red-700"></div>
+    <Section
+      id="about"
+      title="Our Story"
+      className="bg-gradient-to-b from-[#f5efe6] to-[#ede4d4]"
+      titleClassName="text-slate-800"
+    >
+      {/* Decorative divider */}
+      <div className="flex items-center justify-center gap-4 -mt-4 mb-12">
+        <div className="h-px flex-1 max-w-20 bg-gradient-to-r from-transparent to-slate-400" />
         <span className="text-red-700 text-2xl">&#9733;</span>
-        <div className="h-0.5 w-20 bg-red-700"></div>
+        <div className="h-px flex-1 max-w-20 bg-gradient-to-l from-transparent to-slate-400" />
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-2 items-center">
-        {/* Image */}
+      {/* First block: Louis photo left, origin story right */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center mb-16">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="relative"
+          transition={{ duration: 0.7 }}
         >
-          <div
-            className="rounded-xl overflow-hidden shadow-2xl"
-            style={{
-              boxShadow: `
-                0 0 0 4px #5c3d2e,
-                0 0 0 6px #3d2817,
-                8px 8px 20px rgba(0,0,0,0.4)
-              `,
-            }}
-          >
+          <div className="relative">
+            <img
+              src={louPhoto}
+              alt="Louis Mastrangelo, founder of Alive & Kicking Lobsters"
+              className="w-full rounded-2xl object-cover shadow-xl ring-1 ring-black/5"
+            />
+            <div className="absolute bottom-3 right-3 md:-bottom-3 md:-right-3 bg-slate-800 text-amber-100 px-4 py-2 rounded-lg shadow-lg text-sm font-semibold tracking-wider uppercase">
+              Louis Mastrangelo
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ staggerChildren: 0.15 }}
+          className="space-y-5"
+        >
+          <motion.p variants={fadeUp} className="text-slate-500 text-lg tracking-wide uppercase font-medium">
+            Owner Louis Mastrangelo
+          </motion.p>
+          <motion.p variants={fadeUp} className="text-lg leading-relaxed text-slate-700 font-body">
+            Louis Mastrangelo grew up in a big Italian-American family in Cambridge. His father Rocco
+            came to Boston from a small hilltop village in southern Italy called Anzano di Puglia in 1914,
+            just a teenager. Louis's fondest memories are of Sunday afternoons at his grandparents' table,
+            the whole family crowded together over homemade pasta, meatballs, cold cuts, and wine that
+            never seemed to run out. That love of feeding people never left him. In 1995, Louis opened
+            Alive & Kicking Lobsters. Over thirty years later, every customer who walks through the
+            door still gets treated like family.
+          </motion.p>
+        </motion.div>
+      </div>
+
+      {/* Second block: story right, outdoor dining left */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center mb-12">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ staggerChildren: 0.15 }}
+          className="space-y-5 md:order-1"
+        >
+          <motion.p variants={fadeUp} className="text-lg leading-relaxed text-slate-700 font-body">
+            Tucked inside a blue house on a quiet Cambridge side street, Alive & Kicking is part
+            seafood market, part neighborhood gathering spot. Grab a seat at one of the outdoor tables,
+            order a lobster sandwich on Scali bread, and see why people drive from all over
+            Boston to eat here. We sell fresh live lobsters, steamed lobsters, chowders, and seafood
+            straight off the boat. It's casual, it's local, and the food speaks for itself.
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="md:order-2"
+        >
+          <div className="relative">
             <img
               src={seatingImage}
               alt="Outdoor seating at Alive & Kicking"
-              className="w-full h-auto object-cover"
+              className="w-full rounded-2xl object-cover shadow-xl ring-1 ring-black/5"
+              loading="lazy"
             />
-          </div>
-          {/* Decorative badge */}
-          <div
-            className="absolute -bottom-4 -right-4 px-4 py-2 rounded-lg shadow-lg transform rotate-3"
-            style={{
-              background: `
-                repeating-linear-gradient(90deg, rgba(139,90,43,0.1) 0px, rgba(160,120,60,0.12) 2px, rgba(139,90,43,0.1) 4px),
-                linear-gradient(to bottom, #c4a35a, #a67c52)
-              `,
-              boxShadow: `
-                inset 2px 2px 4px rgba(255,255,255,0.3),
-                inset -2px -2px 4px rgba(0,0,0,0.2),
-                4px 4px 10px rgba(0,0,0,0.3)
-              `,
-            }}
-          >
-            <span className="font-bold text-slate-900 uppercase tracking-wide text-sm">Since 1995</span>
-          </div>
-        </motion.div>
-
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="space-y-6"
-        >
-          <div
-            className="rounded-xl p-6 shadow-xl"
-            style={{
-              background: `
-                repeating-linear-gradient(90deg, rgba(139,90,43,0.08) 0px, rgba(160,120,60,0.1) 2px, rgba(139,90,43,0.08) 4px),
-                linear-gradient(to bottom, #3d2817, #2a1a0f)
-              `,
-              boxShadow: `
-                inset 2px 2px 8px rgba(255,255,255,0.1),
-                inset -2px -2px 8px rgba(0,0,0,0.3),
-                0 0 0 4px #5c3d2e,
-                6px 6px 15px rgba(0,0,0,0.3)
-              `,
-            }}
-          >
-            <p className="text-lg leading-relaxed text-amber-100 font-display">
-              Hidden in a blue house on a quiet Cambridge street, Alive & Kicking Lobsters has been serving the neighborhood since 1995. A no-frills fish market and lobster shack with live tanks, fresh seafood, and Boston's best lobster sandwich.
-            </p>
-          </div>
-
-          {/* Feature badges - Wood style */}
-          <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-            {[
-              { text: "Cash or Card", color: "from-slate-700 to-slate-800" },
-              { text: "Dogs Welcome", color: "from-blue-800 to-blue-900" },
-              { text: "Outdoor Seating", color: "from-amber-700 to-amber-800" },
-              { text: "Fresh Daily", color: "from-red-700 to-red-800" },
-            ].map((badge, i) => (
-              <div
-                key={badge.text}
-                className="px-4 py-2 rounded-lg shadow-lg"
-                style={{
-                  background: `
-                    repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.08) 2px, rgba(255,255,255,0.05) 4px),
-                    linear-gradient(to bottom, ${badge.color.includes('slate') ? '#475569, #334155' :
-                      badge.color.includes('blue') ? '#1e40af, #1e3a8a' :
-                      badge.color.includes('amber') ? '#b45309, #92400e' : '#b91c1c, #991b1b'})
-                  `,
-                  boxShadow: `
-                    inset 1px 1px 3px rgba(255,255,255,0.2),
-                    inset -1px -1px 3px rgba(0,0,0,0.3),
-                    3px 3px 8px rgba(0,0,0,0.3)
-                  `,
-                  transform: `rotate(${i % 2 === 0 ? '-1' : '1'}deg)`,
-                }}
-              >
-                <span className="font-bold text-white uppercase tracking-wide text-sm">{badge.text}</span>
-              </div>
-            ))}
+            <div className="absolute bottom-3 left-3 md:-bottom-3 md:-left-3 bg-slate-800 text-amber-100 px-4 py-2 rounded-lg shadow-lg text-sm font-semibold tracking-wider uppercase">
+              Since 1995
+            </div>
           </div>
         </motion.div>
       </div>
+
+      {/* Feature badges */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="flex flex-wrap gap-3 justify-center mt-4"
+      >
+        {["Family Owned", "Dogs Welcome", "Outdoor Seating", "Fresh Daily"].map((text) => (
+          <span
+            key={text}
+            className="px-5 py-2 rounded-full bg-slate-800 text-amber-50 text-sm font-medium tracking-wide shadow-md"
+          >
+            {text}
+          </span>
+        ))}
+      </motion.div>
     </Section>
   );
 }

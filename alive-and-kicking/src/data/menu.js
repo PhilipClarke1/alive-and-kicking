@@ -1,12 +1,16 @@
 // Import local images (optimized WebP)
 import heroImageFile from "../assets/bostonharbor.jpeg";
-import twinLobsterImg from "../assets/twinLobsterSpecial.webp";
-import sandwichMealImg from "../assets/lobsterSandwich.webp";
+import twinLobsterImg from "../assets/twinlobster.png";
+import sandwichMealImg from "../assets/lobstersandwich2.png";
+import steamedLobsterImg from "../assets/steamedLobster2.png";
+import chowderImg from "../assets/chowder2.png";
+import steamedClamsImg from "../assets/steamedClams2.png";
+import musselsImg from "../assets/mussels2.png";
 import menuImg from "../assets/menu.webp";
 import menuImg1200 from "../assets/menu-1200.webp";
 import menuImg800 from "../assets/menu-800.webp";
 import logoImg from "../assets/akl-logo-removebg-preview.png";
-import seatingImg from "../assets/seating.webp";
+import seatingImg from "../assets/outdoordining.png";
 
 export const heroImage = heroImageFile;
 export const logo = logoImg;
@@ -22,17 +26,51 @@ export const featuredItems = [
   {
     id: 1,
     name: "Twin Lobster Special",
-    price: "$45.95",
-    priceToGo: "$47.95",
+    price: "$47.95",
+    priceToGo: "$49.95",
     image: twinLobsterImg,
-    description: "2 cooked lobsters, steamers or mussels, corn on the cob",
+    description:
+      "Two perfectly cooked lobsters served alongside your choice of steamers or mussels, with sweet corn on the cob. Our most popular platter and the reason people drive across town.",
   },
   {
     id: 2,
-    name: "Lobster Sandwich",
+    name: "The Lobster Sandwich",
     price: "$32.95",
     image: sandwichMealImg,
-    description: "Our famous lobster sandwich on homemade Scali bread",
+    description:
+      "The sandwich that put us on the map. Generous chunks of fresh lobster meat piled high on Scali bread. Simple, honest, and unforgettable. Ask anyone in Cambridge.",
+  },
+  {
+    id: 3,
+    name: "Steamed Lobster",
+    price: "$19.95",
+    image: steamedLobsterImg,
+    description:
+      "A whole lobster, classically steamed and served straight from the pot. No frills, no fuss, just pure, sweet lobster the way it was meant to be enjoyed.",
+  },
+  {
+    id: 4,
+    name: "New England Chowders",
+    price: "$12.50",
+    image: chowderImg,
+    description:
+      "Choose from Clam Chowder, Seafood Chowder, Lobster Bisque, or Shrimp & Corn Chowder. Each one made from scratch daily with the freshest ingredients off the boat.",
+  },
+  {
+    id: 5,
+    name: "Steamed Clams",
+    price: "$14.95",
+    image: steamedClamsImg,
+    description:
+      "A heaping bowl of tender steamed clams served piping hot with drawn butter. A New England classic done right, straight from the waters off the coast.",
+  },
+  {
+    id: 6,
+    name: "Bowl of Mussels",
+    price: "$14.95",
+    image: musselsImg,
+    description:
+      "Fresh, plump mussels steamed to perfection. Simple and satisfying. A taste of the ocean in every bite.",
   },
 ];
 
@@ -49,8 +87,8 @@ export const menuItems = [
   {
     id: 2,
     name: "Twin Lobster Special",
-    price: "$45.95",
-    priceToGo: "$47.95",
+    price: "$47.95",
+    priceToGo: "$49.95",
     category: "lobster",
     image:
       "https://images.unsplash.com/photo-1553247407-23251ce81f59?w=400&h=300&fit=crop",
@@ -108,7 +146,7 @@ export const menuItems = [
     category: "chowder",
     image:
       "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?w=400&h=300&fit=crop",
-    description: "Sweet corn and shrimp chowder",
+    description: "Sat-Sun only",
   },
   {
     id: 9,
@@ -144,7 +182,7 @@ export const menuItems = [
     category: "sides",
     image:
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop",
-    description: "Sat-Sun only",
+    description: "",
   },
 ];
 

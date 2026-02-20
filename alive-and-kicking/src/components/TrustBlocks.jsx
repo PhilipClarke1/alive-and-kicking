@@ -38,7 +38,7 @@ export function TrustBlocks() {
   ];
 
   return (
-    <section className="bg-slate-800 py-6 border-b border-slate-700">
+    <section className="bg-slate-800 py-6 border-b border-slate-700/50">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -49,7 +49,7 @@ export function TrustBlocks() {
           {blocks.map((block, index) => (
             <div key={index} className="flex items-center justify-center gap-2">
               <div className="text-red-400">{block.icon}</div>
-              <span className="text-white/80 text-xs sm:text-sm font-medium">{block.label}</span>
+              <span className="text-slate-300 text-xs sm:text-sm font-medium">{block.label}</span>
             </div>
           ))}
         </motion.div>
