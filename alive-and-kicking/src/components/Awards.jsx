@@ -48,9 +48,9 @@ function TravelChannelLogo({ className }) {
   return (
     <svg className={className} viewBox="0 0 369.3 96.5" xmlns="http://www.w3.org/2000/svg">
       <path fill="#00B3E3" d="M184.7 0c-26.7 0-48.3 21.6-48.3 48.3s21.6 48.3 48.3 48.3 48.3-21.6 48.3-48.3S211.3 0 184.7 0zm22.2 62.8h-9.5V40.3h-12.7v22.5h-9.5V40.3h-12.7v22.5h-9.5V31.2h53.9v31.6z"/>
-      <path fill="#1D1D1B" d="M0 31.2h19.1v31.6h9.5V31.2h19.1v-9.1H0zM67.9 33.5c3.7 0 7.2 1.5 9.8 4.1l6.7-6.7c-4.3-4.3-10.2-7-16.5-7-12.9 0-23.3 10.4-23.3 23.3s10.4 23.3 23.3 23.3c6.3 0 12.2-2.7 16.5-7l-6.7-6.7c-2.6 2.6-6.1 4.1-9.8 4.1-7.6 0-13.8-6.2-13.8-13.8s6.2-13.6 13.8-13.6z"/>
-      <path fill="#1D1D1B" d="M282.8 22.1v19.1h-19.1V22.1h-9.5v40.7h9.5V50.3h19.1v12.5h9.5V22.1zM316.1 53.7h-14.3l7.2-17.2 7.1 17.2zm2.8-31.6l-20.8 40.7h10.2l3.2-7.7h18.8l3.2 7.7h10.2l-20.8-40.7h-4zM369.3 53.7v9.1h-31.6V22.1h9.5v31.6z"/>
-      <path fill="#1D1D1B" d="M105.3 38.1V22.1H95.8v40.7h9.5V47.2h4.6l11.6 15.6h11.6l-13.3-17.1c5.4-2.4 9.1-7.5 9.1-14.3v-.5c0-9-6.5-13.8-16.1-13.8h-7.5zm0-7.5h5c4 0 7 1.8 7 5.6v.5c0 3.5-2.8 5.6-7 5.6h-5V30.6z"/>
+      <path fill="#131313" d="M0 31.2h19.1v31.6h9.5V31.2h19.1v-9.1H0zM67.9 33.5c3.7 0 7.2 1.5 9.8 4.1l6.7-6.7c-4.3-4.3-10.2-7-16.5-7-12.9 0-23.3 10.4-23.3 23.3s10.4 23.3 23.3 23.3c6.3 0 12.2-2.7 16.5-7l-6.7-6.7c-2.6 2.6-6.1 4.1-9.8 4.1-7.6 0-13.8-6.2-13.8-13.8s6.2-13.6 13.8-13.6z"/>
+      <path fill="#131313" d="M282.8 22.1v19.1h-19.1V22.1h-9.5v40.7h9.5V50.3h19.1v12.5h9.5V22.1zM316.1 53.7h-14.3l7.2-17.2 7.1 17.2zm2.8-31.6l-20.8 40.7h10.2l3.2-7.7h18.8l3.2 7.7h10.2l-20.8-40.7h-4zM369.3 53.7v9.1h-31.6V22.1h9.5v31.6z"/>
+      <path fill="#131313" d="M105.3 38.1V22.1H95.8v40.7h9.5V47.2h4.6l11.6 15.6h11.6l-13.3-17.1c5.4-2.4 9.1-7.5 9.1-14.3v-.5c0-9-6.5-13.8-16.1-13.8h-7.5zm0-7.5h5c4 0 7 1.8 7 5.6v.5c0 3.5-2.8 5.6-7 5.6h-5V30.6z"/>
     </svg>
   );
 }
@@ -58,7 +58,7 @@ function TravelChannelLogo({ className }) {
 function TastingTableLogo({ className }) {
   return (
     <svg className={className} viewBox="0 0 220 24" xmlns="http://www.w3.org/2000/svg">
-      <text x="110" y="18" textAnchor="middle" fontFamily="'Georgia', 'Times New Roman', serif" fontWeight="400" fontSize="16" letterSpacing="4" fill="#1a1a1a">TASTING TABLE</text>
+      <text x="110" y="18" textAnchor="middle" fontFamily="'Georgia', 'Times New Roman', serif" fontWeight="400" fontSize="16" letterSpacing="4" fill="#131313">TASTING TABLE</text>
     </svg>
   );
 }
@@ -66,7 +66,7 @@ function TastingTableLogo({ className }) {
 function InfatuationLogo({ className }) {
   return (
     <svg className={className} viewBox="0 0 320 40" xmlns="http://www.w3.org/2000/svg">
-      <text x="160" y="28" textAnchor="middle" fontFamily="'Georgia', 'Times New Roman', serif" fontWeight="700" fontSize="20" letterSpacing="2" fill="#1a1a1a">THE INFATUATION</text>
+      <text x="160" y="28" textAnchor="middle" fontFamily="'Georgia', 'Times New Roman', serif" fontWeight="700" fontSize="20" letterSpacing="2" fill="#131313">THE INFATUATION</text>
     </svg>
   );
 }
@@ -119,7 +119,7 @@ export function Awards() {
   return (
     <section className="py-12 bg-white border-y border-slate-200 overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-slate-500 mb-8">
+        <p className="text-center text-base md:text-lg font-bold uppercase tracking-[0.25em] text-slate-500 mb-8">
           As Featured In & Recognized By
         </p>
       </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Section } from "./Section";
-import { seatingImage } from "../data/menu";
+import storefrontPhoto from "../assets/akl-storefront.png";
 import louPhoto from "../assets/lou1984pic2.jpg";
 
 const fadeUp = {
@@ -92,8 +92,8 @@ export function About() {
         >
           <div className="relative">
             <img
-              src={seatingImage}
-              alt="Outdoor seating at Alive & Kicking"
+              src={storefrontPhoto}
+              alt="Alive & Kicking Lobsters storefront"
               className="w-full rounded-2xl object-cover shadow-xl ring-1 ring-black/5"
               loading="lazy"
             />
