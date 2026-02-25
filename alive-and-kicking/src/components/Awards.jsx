@@ -88,20 +88,20 @@ function AwardCard({ award }) {
   const logoSrc = logoImages[award.org];
 
   return (
-    <div className="flex-shrink-0 flex flex-col items-center text-center gap-3 w-48 px-4">
-      <div className="h-12 flex items-center justify-center">
+    <div className="flex-shrink-0 flex flex-col items-center text-center gap-2 md:gap-3 w-36 md:w-48 px-3 md:px-4">
+      <div className="h-8 md:h-12 flex items-center justify-center">
         {LogoComponent ? (
-          <LogoComponent className="h-10 w-auto max-w-[160px]" />
+          <LogoComponent className="h-6 md:h-10 w-auto max-w-[120px] md:max-w-[160px]" />
         ) : logoSrc ? (
           <img
             src={logoSrc}
             alt={award.org}
-            className="max-h-10 max-w-[160px] object-contain"
+            className="max-h-6 md:max-h-10 max-w-[120px] md:max-w-[160px] object-contain"
           />
         ) : null}
       </div>
       <div>
-        <p className="text-slate-800 text-sm font-bold leading-tight whitespace-nowrap">
+        <p className="text-slate-800 text-xs md:text-sm font-bold leading-tight whitespace-nowrap">
           {award.name}
         </p>
         {award.year && (
@@ -117,17 +117,17 @@ export function Awards() {
   const doubled = [...awards, ...awards];
 
   return (
-    <section className="py-12 bg-white border-y border-slate-200 overflow-hidden">
+    <section className="py-6 md:py-12 bg-white border-y border-slate-200 overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-base md:text-lg font-bold uppercase tracking-[0.25em] text-slate-500 mb-8">
+        <p className="text-center text-sm md:text-lg font-bold uppercase tracking-[0.25em] text-slate-500 mb-4 md:mb-8">
           As Featured In & Recognized By
         </p>
       </div>
       <motion.div
-        className="flex gap-12"
+        className="flex gap-8 md:gap-12"
         animate={{ x: ["0%", "-50%"] }}
         transition={{
-          duration: 30,
+          duration: 15,
           repeat: Infinity,
           ease: "linear",
         }}
