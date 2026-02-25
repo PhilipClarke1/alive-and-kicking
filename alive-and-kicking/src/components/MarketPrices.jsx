@@ -65,7 +65,7 @@ export function MarketPrices() {
 
       {/* Note */}
       <p className="mt-8 text-center text-slate-500 text-sm italic">
-        Prices change daily based on market conditions. Call ahead for availability.
+        Prices do not include tax. Prices change daily based on market conditions. Call ahead for availability.
       </p>
     </Section>
   );

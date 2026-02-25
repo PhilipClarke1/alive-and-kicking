@@ -55,11 +55,11 @@ export function About() {
           </motion.p>
           <motion.p variants={fadeUp} className="text-lg leading-relaxed text-slate-700 font-body">
             Louis Mastrangelo grew up in a big Italian-American family in Cambridge. His father Rocco
-            came to Boston from a small hilltop village in southern Italy called Anzano di Puglia in 1914,
-            just a teenager. Louis's fondest memories are of Sunday afternoons at his grandparents' table,
+            came to Boston from a small hilltop village in southern Italy called Anzano di Puglia in 1914
+            as a teenager. Louis's fondest memories are of Sunday afternoons at his grandparents' table,
             the whole family crowded together over homemade pasta, meatballs, cold cuts, and wine that
-            never seemed to run out. That love of feeding people never left him. In 1995, Louis opened
-            Alive & Kicking Lobsters. Over thirty years later, every customer who walks through the
+            never seemed to run out. That love of feeding people never left him. In 1995, he opened
+            Alive & Kicking Lobsters, and over thirty years later, every customer who walks through the
             door still gets treated like family.
           </motion.p>
         </motion.div>

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useUIStore } from "../store/useUIStore";
 
-const sectionIds = ["hero", "menu", "about", "location", "contact"];
+const sectionIds = ["hero", "menu", "market", "about", "reviews", "location", "contact"];
 
 export function useActiveSection() {
   const setActiveSection = useUIStore((state) => state.setActiveSection);

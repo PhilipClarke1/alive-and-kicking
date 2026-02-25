@@ -162,7 +162,7 @@ export function Menu() {
         {/* Note */}
         <div className="mt-8 text-center">
           <p className="text-slate-600 text-sm italic">
-            Fresh seafood daily. Menu items may sell out. Cash preferred, cards accepted.
+            Prices do not include tax. Fresh seafood daily. Menu items may sell out. Cash preferred, cards accepted.
           </p>
         </div>
       </div>
