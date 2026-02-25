@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import phantomGourmetLogo from "../assets/logos/phantom-gourmet.png";
 import roadfoodLogo from "../assets/logos/roadfood.svg";
 
@@ -113,6 +114,14 @@ function AwardCard({ award }) {
 }
 
 export function Awards() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   // Double the awards array for seamless looping
   const doubled = [...awards, ...awards];
 
@@ -127,7 +136,7 @@ export function Awards() {
         className="flex gap-8 md:gap-12"
         animate={{ x: ["0%", "-50%"] }}
         transition={{
-          duration: 15,
+          duration: isMobile ? 8 : 15,
           repeat: Infinity,
           ease: "linear",
         }}
