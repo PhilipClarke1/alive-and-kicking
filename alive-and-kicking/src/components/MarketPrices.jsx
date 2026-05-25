@@ -44,21 +44,31 @@ export function MarketPrices() {
             <h4 className="text-center text-lg md:text-xl font-bold font-display uppercase tracking-[0.2em] text-slate-800 mb-6">
               {section.label}
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
-              {section.items.map((item) => (
-                <div key={item.name} className="py-3 border-b border-slate-300/60">
-                  <div className="flex justify-between items-baseline gap-4">
-                    <span className="text-slate-800 font-semibold uppercase tracking-wide text-base">
-                      {item.name}
-                    </span>
-                    <span className="flex-shrink-0 text-slate-800 font-semibold text-base">
-                      {item.price}
-                      {item.unit ? <span className="text-slate-400 font-normal text-sm ml-1">{item.unit}</span> : null}
-                    </span>
+            {section.items.length === 0 ? (
+              <p className="text-center text-slate-600 italic">
+                Market prices fluctuate daily — please call{" "}
+                <a href="tel:+16178760451" className="text-red-700 font-semibold not-italic">
+                  (617) 876-0451
+                </a>{" "}
+                for current pricing.
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
+                {section.items.map((item) => (
+                  <div key={item.name} className="py-3 border-b border-slate-300/60">
+                    <div className="flex justify-between items-baseline gap-4">
+                      <span className="text-slate-800 font-semibold uppercase tracking-wide text-base">
+                        {item.name}
+                      </span>
+                      <span className="flex-shrink-0 text-slate-800 font-semibold text-base">
+                        {item.price}
+                        {item.unit ? <span className="text-slate-400 font-normal text-sm ml-1">{item.unit}</span> : null}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>

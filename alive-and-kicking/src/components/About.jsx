@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Section } from "./Section";
-import storefrontPhoto from "../assets/akl-storefront.png";
+import storefrontPhoto from "../assets/akl-storefront.webp";
 import louPhoto from "../assets/lou1984pic2.jpg";
 
 const fadeUp = {
@@ -31,7 +31,7 @@ export function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="relative">
+          <div className="relative md:-rotate-2 transition-transform">
             <img
               src={louPhoto}
               alt="Louis Mastrangelo, founder of Alive & Kicking Lobsters"
@@ -90,7 +90,7 @@ export function About() {
           transition={{ duration: 0.7 }}
           className="md:order-2"
         >
-          <div className="relative">
+          <div className="relative md:rotate-2 transition-transform">
             <img
               src={storefrontPhoto}
               alt="Alive & Kicking Lobsters storefront"

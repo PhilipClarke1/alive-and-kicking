@@ -1,16 +1,16 @@
 // Import local images (optimized WebP)
 import heroImageFile from "../assets/bostonharbor.jpeg";
-import twinLobsterImg from "../assets/twinlobster.png";
-import sandwichMealImg from "../assets/lobstersandwich2.png";
-import steamedLobsterImg from "../assets/steamedLobster2.png";
-import chowderImg from "../assets/chowder2.png";
-import steamedClamsImg from "../assets/steamedClams2.png";
-import musselsImg from "../assets/mussels2.png";
+import twinLobsterImg from "../assets/twinlobster.webp";
+import sandwichMealImg from "../assets/lobstersandwich2.webp";
+import steamedLobsterImg from "../assets/steamedLobster2.webp";
+import chowderImg from "../assets/chowder2.webp";
+import steamedClamsImg from "../assets/steamedClams2.webp";
+import musselsImg from "../assets/mussels2.webp";
 import menuImg from "../assets/menu.webp";
 import menuImg1200 from "../assets/menu-1200.webp";
 import menuImg800 from "../assets/menu-800.webp";
 import logoImg from "../assets/akl-logo-removebg-preview.png";
-import seatingImg from "../assets/outdoordining.png";
+import seatingImg from "../assets/outdoordining.webp";
 
 export const heroImage = heroImageFile;
 export const logo = logoImg;
@@ -26,19 +26,19 @@ export const featuredItems = [
   {
     id: 1,
     name: "Twin Lobster Special",
-    price: "$47.95",
-    priceToGo: "$49.95",
+    price: "$49.95",
+    priceToGo: "$51.95",
     image: twinLobsterImg,
     description:
-      "Two perfectly cooked lobsters served alongside your choice of steamers or mussels, with sweet corn on the cob. Our most popular platter and the reason people drive across town.",
+      "Two steamed lobsters, your pick of steamers or mussels, sweet corn on the cob. Our most popular platter.",
   },
   {
     id: 2,
     name: "The Lobster Sandwich",
-    price: "$32.95",
+    price: "$34.95",
     image: sandwichMealImg,
     description:
-      "The sandwich that put us on the map. Generous chunks of fresh lobster meat piled high on Scali bread. Simple, honest, and unforgettable. Ask anyone in Cambridge.",
+      "Fresh lobster meat piled high on toasted Scali bread, served with chips. The original.",
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ export const featuredItems = [
     price: "$19.95",
     image: steamedLobsterImg,
     description:
-      "A whole lobster, classically steamed and served straight from the pot. No frills, no fuss, just pure, sweet lobster the way it was meant to be enjoyed.",
+      "A whole lobster, steamed. Butter on the side.",
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ export const featuredItems = [
     price: "$12.50",
     image: chowderImg,
     description:
-      "Choose from Clam Chowder, Seafood Chowder, Lobster Bisque, or Shrimp & Corn Chowder. Each one made from scratch daily with the freshest ingredients off the boat.",
+      "Choose from Clam Chowder, Seafood Chowder, or Lobster Bisque. Each one made from scratch daily with the freshest ingredients.",
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ export const featuredItems = [
     price: "$14.95",
     image: steamedClamsImg,
     description:
-      "A heaping bowl of tender steamed clams served piping hot with drawn butter. A New England classic done right, straight from the waters off the coast.",
+      "Clams steamed in garlic, butter, white wine, and lemon. Butter on the side.",
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ export const featuredItems = [
     price: "$14.95",
     image: musselsImg,
     description:
-      "Fresh, plump mussels steamed to perfection. Simple and satisfying. A taste of the ocean in every bite.",
+      "Mussels steamed in garlic, butter, white wine, and lemon. Butter on the side.",
   },
 ];
 
@@ -78,17 +78,17 @@ export const menuItems = [
   {
     id: 1,
     name: "Lobster Sandwich",
-    price: "$32.95",
+    price: "$34.95",
     category: ["lobster", "sandwich"],
     image:
       "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=400&h=300&fit=crop",
-    description: "Our famous lobster sandwich",
+    description: "Our famous lobster sandwich, served with chips",
   },
   {
     id: 2,
     name: "Twin Lobster Special",
-    price: "$47.95",
-    priceToGo: "$49.95",
+    price: "$49.95",
+    priceToGo: "$51.95",
     category: "lobster",
     image:
       "https://images.unsplash.com/photo-1553247407-23251ce81f59?w=400&h=300&fit=crop",
@@ -106,11 +106,11 @@ export const menuItems = [
   {
     id: 4,
     name: "Crab Salad Sandwich",
-    price: "$23.95",
+    price: "$24.95",
     category: "sandwich",
     image:
       "https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=400&h=300&fit=crop",
-    description: "Fresh crab salad on a roll",
+    description: "Fresh crab salad on a roll, served with chips",
   },
   {
     id: 5,
@@ -138,15 +138,6 @@ export const menuItems = [
     image:
       "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?w=400&h=300&fit=crop",
     description: "Mixed seafood in creamy broth",
-  },
-  {
-    id: 8,
-    name: "Shrimp + Corn Chowder",
-    price: "$12.50",
-    category: "chowder",
-    image:
-      "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?w=400&h=300&fit=crop",
-    description: "Sat-Sun only",
   },
   {
     id: 9,
@@ -184,6 +175,15 @@ export const menuItems = [
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop",
     description: "",
   },
+  {
+    id: 13,
+    name: "Chips",
+    price: "$2.00",
+    category: "sides",
+    image:
+      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop",
+    description: "",
+  },
 ];
 
 export const categories = [
@@ -195,17 +195,8 @@ export const categories = [
   { id: "sides", label: "Sides" },
 ];
 
-// Live Lobster Prices (per pound)
-export const lobsterPrices = [
-  { name: "Chicken Lobster (Chx)", price: "$13.75", unit: "/ lb" },
-  { name: "1¼ lb Lobster", price: "$14.75", unit: "/ lb" },
-  { name: "1½ lb Lobster", price: "$15.75", unit: "/ lb" },
-  { name: "2+ lb Lobster", price: "$16.75", unit: "/ lb" },
-  { name: "Lobster Meat", price: "$65", unit: "/ lb" },
-  { name: "Lobster Tails Only", price: "$67", unit: "/ lb" },
-  { name: "Lobster Salad", price: "$67", unit: "/ lb" },
-  { name: "Crab Meat (1 lb container)", price: "$41", unit: "" },
-];
+// Live Lobster Prices (call for current pricing — market rates fluctuate daily)
+export const lobsterPrices = [];
 
 // Fresh Seafood (per pound unless noted)
 export const freshSeafood = [
@@ -219,6 +210,7 @@ export const freshSeafood = [
   { name: "Scallops", price: "$24.95", unit: "/ lb" },
   { name: "Count Necks", price: "$0.95", unit: "each" },
   { name: "Oysters", price: "$1.95", unit: "each" },
+  { name: "Crab Meat (1 lb container)", price: "$41", unit: "" },
 ];
 
 // Frozen Seafood

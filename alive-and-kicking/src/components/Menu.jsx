@@ -1,37 +1,6 @@
-import { motion } from "framer-motion";
-import { Section } from "./Section";
-import { menuItems, categories, featuredItems, menuImage, menuImageSrcSet } from "../data/menu";
-// PNG fallback for older browsers without WebP support
-import menuImagePng from "../assets/menu.png";
-import { useUIStore } from "../store/useUIStore";
-
-// Keep unused animation variants to avoid HMR issues
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-};
-const featuredCardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
-};
+import { menuItems, categories, featuredItems } from "../data/menu";
 
 export function Menu() {
-  const menuFilter = useUIStore((state) => state.menuFilter);
-  const setMenuFilter = useUIStore((state) => state.setMenuFilter);
-
-  const filteredItems =
-    menuFilter === "all"
-      ? menuItems
-      : menuItems.filter((item) =>
-          Array.isArray(item.category)
-            ? item.category.includes(menuFilter)
-            : item.category === menuFilter
-        );
-
   return (
     <section id="menu" className="py-16 md:py-24 bg-amber-50">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

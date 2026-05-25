@@ -7,13 +7,11 @@ import { About } from "./components/About";
 import { Awards } from "./components/Awards";
 import { Reviews } from "./components/Reviews";
 import { LocationHours } from "./components/LocationHours";
-import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { BackToTop } from "./components/BackToTop";
 import { useActiveSection } from "./hooks/useActiveSection";
 
 function App() {
-  // Initialize active section tracking
   useActiveSection();
 
   return (
@@ -28,7 +26,6 @@ function App() {
         <About />
         <Reviews />
         <LocationHours />
-        <Contact />
       </main>
       <Footer />
       <BackToTop />
