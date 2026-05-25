@@ -238,7 +238,7 @@ export const contactInfo = {
   address: "269 Putnam Ave, Cambridge, MA 02139",
   phone: "(617) 876-0451",
   hours: {
-    weekday: "Mon–Sat 11am–6pm",
+    weekday: "Mon–Sat 11–6 · Sun 11–4",
     sunday: "Sun 11am–4pm",
     note: "Closed Major Holidays",
   },
