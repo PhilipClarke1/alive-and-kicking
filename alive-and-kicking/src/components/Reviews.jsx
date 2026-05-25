@@ -134,7 +134,7 @@ function AnimatedRatingCard({ platform, data }) {
       </div>
       <div className="text-sm text-slate-600 font-medium capitalize">{platform}</div>
       <div ref={reviewRef} className="text-xs text-slate-400">
-        {Math.round(reviewCount).toLocaleString()} reviews
+        {Math.round(reviewCount).toLocaleString()}+ reviews
       </div>
     </motion.div>
   );
