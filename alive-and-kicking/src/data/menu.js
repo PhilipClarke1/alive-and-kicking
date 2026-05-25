@@ -237,7 +237,6 @@ export const freshOffTheBoat = ["Salmon", "Haddock", "Scallops", "Cod"];
 export const contactInfo = {
   address: "269 Putnam Ave, Cambridge, MA 02139",
   phone: "(617) 876-0451",
-  email: "info@aliveandkickinglobsters.com",
   hours: {
     weekday: "Mon–Sat 11am–6pm",
     sunday: "Sun 11am–4pm",
