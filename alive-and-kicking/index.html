@@ -9,6 +9,8 @@
     <meta name="description" content="Boston's famous lobster sandwich at our casual Cambridge seafood shack. Fresh live lobsters, seafood market, outdoor seating. Open Mon-Sat 11am-6pm, Sun 11am-4pm." />
     <meta name="keywords" content="lobster sandwich Cambridge, live lobster Boston, fresh seafood market, lobster shack Cambridge MA" />
     <link rel="canonical" href="https://aliveandkickinglobster.com/" />
+    <!-- Allow large image previews so Google can surface the food photo -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="restaurant.restaurant" />
@@ -36,9 +38,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <!-- Favicon (sized per Google's guidelines: square, multiples of 48px) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/favicon-192.png" />
 
     <!-- JSON-LD Structured Data: Restaurant -->
     <script type="application/ld+json">
@@ -46,7 +50,11 @@
       "@context": "https://schema.org",
       "@type": "Restaurant",
       "name": "Alive & Kicking Lobsters",
-      "image": "https://aliveandkickinglobster.com/og-image.jpg",
+      "image": [
+        "https://aliveandkickinglobster.com/og-image.jpg",
+        "https://aliveandkickinglobster.com/og-image-4x3.jpg",
+        "https://aliveandkickinglobster.com/og-image-square.jpg"
+      ],
       "url": "https://aliveandkickinglobster.com/",
       "telephone": "+1-617-876-0451",
       "priceRange": "$$",
